@@ -12,4 +12,9 @@ class Province extends Model
     public $fillable = [
         'name', 'name_en', 'slug'
     ];
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

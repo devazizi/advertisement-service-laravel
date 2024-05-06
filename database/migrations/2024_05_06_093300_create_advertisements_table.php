@@ -16,12 +16,12 @@ return new class extends Migration
             $table->unsignedInteger('client_id')->index('client_id_index');
             $table->unsignedInteger('advertisement_category_id')->index('ad_category_idx');
             $table->string('name');
-            $table->fullText('description');
+            $table->text('description');
             $table->enum('payment_type', [
                 'AGREED_PRICE', 'FIXED', 'EXCHANGE'
             ]);
             $table->unsignedInteger('price')->nullable();
-            $table->boolean('is_verified')->default('false');
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
     }
