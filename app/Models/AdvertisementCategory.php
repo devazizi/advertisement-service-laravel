@@ -10,4 +10,9 @@ class AdvertisementCategory extends Model
     use HasFactory;
 
     public $fillable = ['name', 'name_en', 'slug', 'parent_id'];
+
+    public function childrenCategories()
+    {
+        return $this->hasMany(AdvertisementCategory::class, 'parent_id', 'id');
+    }
 }

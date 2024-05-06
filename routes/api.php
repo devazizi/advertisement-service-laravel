@@ -23,4 +23,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('cities')->group(function () {
         Route::get('/', 'AreaController@indexCities');
     });
+    Route::prefix('advertisement-categories')->group(function () {
+        Route::get('/', 'AdvertisementCategoryController@indexAdvertisementCategories');
+    });
 });
