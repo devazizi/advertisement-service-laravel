@@ -26,4 +26,10 @@ Route::prefix('v1')->group(function () {
     Route::prefix('advertisement-categories')->group(function () {
         Route::get('/', 'AdvertisementCategoryController@indexAdvertisementCategories');
     });
+
+    Route::prefix('advertisements')->group(function () {
+        Route::get('/', 'AdvertisementController@indexAdvertisementsForClientByPagination');
+        Route::get('/{advertisementId}', 'AdvertisementController@getAdvertisementForClient');
+
+    });
 });

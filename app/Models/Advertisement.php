@@ -18,6 +18,11 @@ class Advertisement extends Model
         'description', 'payment_type', 'price', 'is_verified'
     ];
 
+    public function scopeVerifiedAds()
+    {
+        $this->where('is_verified', true);
+    }
+
     public function client()
     {
         return $this->belongsTo(Client::class);
@@ -26,5 +31,10 @@ class Advertisement extends Model
     public function advertisementCategory()
     {
         return $this->belongsTo(AdvertisementCategory::class);
+    }
+
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
     }
 }

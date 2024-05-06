@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Services\AdvertisementCategoryService;
+use App\Services\AdvertisementService;
 use App\Services\AreaService;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Relation::morphMap([
+            'advertisement' => \App\Models\Advertisement::class
+        ]);
     }
 
     /**
@@ -27,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(AdvertisementCategoryService::class, function () {
             return new AdvertisementCategoryService();
+        });
+
+        $this->app->bind(AdvertisementService::class, function () {
+            return new AdvertisementService();
         });
     }
 }
