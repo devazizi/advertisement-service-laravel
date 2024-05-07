@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
 {
-
+    abstract public static function getTableName();
 }
